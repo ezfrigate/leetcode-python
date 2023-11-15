@@ -1,14 +1,16 @@
+#https://leetcode.com/problems/length-of-last-word/description/
+
 def lengthOfLastWord(s):
-    if(len(s) == 1 and s != ' '): return 1
-    i = 0
-    while s[len(s)-i-1] == ' ':
-        i += 1
-    if i == len(s)-1 : return i
-    j = 0
-    while s[len(s)-i-1] != ' ':
-        i += 1
-        j += 1
-    return j
+    ans = 0
+    l = len(s)-1
+    flag = False
+    while(not (flag and s[l] == " ") and l >= 0):
+        if(s[l] != " " and not flag):
+            flag = True
+        if(flag):
+            ans = ans + 1
+        l=l-1
+    return ans
 
 print(lengthOfLastWord('word'))
 print(lengthOfLastWord(' word '))
